@@ -6,16 +6,41 @@
   height: 50%;
 }
 
+.min-h-screen {
+  min-height: 100vh;
+}
+
 .transform-center {
   top: 50%;
   left: 50%;
   transform: translate3d(-50%, -50%, 0);
 }
 
+.transform-center-y {
+  top: 50%;
+  transform: translate3d(0, -50%, 0);
+}
+
 .transform-center-invert-x {
   top: 50%;
   left: 50%;
   transform: translate3d(-50%, -50%, 0) scaleX(-1);
+}
+
+.-z-10 {
+  z-index: -10;
+}
+
+.-z-20 {
+  z-index: -20;
+}
+
+.-z-30 {
+  z-index: -30;
+}
+
+.top-30pc {
+  top: 30%
 }
 
 .invert-x {

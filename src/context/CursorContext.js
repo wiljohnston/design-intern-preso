@@ -10,8 +10,10 @@ const CursorProvider = ({ children }) => {
   const [cursorCenterDeltaY, setCursorCenterDeltaY] = useState(0);
   const [cursorPositionX, setCursorPositionX] = useState(0);
   const [cursorPositionY, setCursorPositionY] = useState(0);
-  const [windowHeight, setWindowHeight] = useState(0);
-  const [windowWidth, setWindowWidth] = useState(0);
+  const [windowHeight, setWindowHeight] = useState(
+    getWindowDimensions().height
+  );
+  const [windowWidth, setWindowWidth] = useState(getWindowDimensions().width);
 
   //
 
