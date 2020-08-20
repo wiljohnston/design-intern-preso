@@ -14,7 +14,7 @@ const Button = ({ className, color, onClick, text, transparent }) => (
       type="button"
       className={`button button--${color} ${
         transparent ? `button--transparent` : ``
-      } ${className} relative py-4 caption uppercase`}
+      } ${className} relative py-4 b1`}
       onClick={onClick}
     >
       {text}

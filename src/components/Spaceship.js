@@ -1,22 +1,27 @@
 import React from "react";
 import PropTypes from "prop-types";
-import spaceshipFrame from "~assets/images/spaceship-frame.png";
+import SpaceshipFrame from "~components/svg/SpaceshipFrame";
 import staticGIF from "~assets/images/static.gif";
 
-const Spaceship = ({ className }) => {
+const Spaceship = ({ className, style, maskColour, img }) => {
   return (
-    <div className={className}>
+    <div className={className} style={style}>
       <figure className="w-full relative">
         <img
-          src={staticGIF}
+          src={img || staticGIF}
           alt="static"
-          className="w-1/2 absolute -z-10 transform-center"
+          style={{
+            marginLeft: `3.5%`,
+            marginTop: `9.6%`,
+            width: `52%`,
+            borderRadius: `1000px`
+          }}
+          className="absolute -z-10 transform-center"
         />
 
-        <img
-          alt="spaceship"
+        <SpaceshipFrame
+          maskColour={maskColour}
           className="w-full relative block"
-          src={spaceshipFrame}
         />
       </figure>
     </div>
@@ -24,11 +29,17 @@ const Spaceship = ({ className }) => {
 };
 
 Spaceship.defaultProps = {
-  className: ``
+  className: ``,
+  img: null,
+  maskColour: null,
+  style: {}
 };
 
 Spaceship.propTypes = {
-  className: PropTypes.string
+  className: PropTypes.string,
+  img: PropTypes.string,
+  style: PropTypes.shape({}),
+  maskColour: PropTypes.string
 };
 
 export default Spaceship;
