@@ -7,6 +7,7 @@ import { graphql } from "gatsby";
 import Layout from "~components/Layout";
 import SEO from "~components/SEO";
 import { CursorContext } from "~context/CursorContext";
+import Button from "~components/Button";
 
 import Line from "~components/svg/Line";
 import Spaceship from "~components/Spaceship";
@@ -44,6 +45,7 @@ const IndexPage = ({ data, location }) => {
 
   const [balanceIndex, setBalanceIndex] = useState(0);
   const [scaleIndex, setScaleIndex] = useState(0);
+  const [showGridLines, setShowGridLines] = useState(false);
 
   const { cactusOne, cactusTwo, bush, ball } = plantProperties;
 
@@ -144,43 +146,66 @@ const IndexPage = ({ data, location }) => {
           />
         </section>
 
-        <section
-          className="w-full grid"
-          style={{ height: `75vw`, marginTop: `-25vw` }}
-        >
-          <article className="grid-end-3" style={{ marginTop: `10vw` }}>
-            <p className="b1">and balance,</p>
-          </article>
-
-          <article
-            className="grid-end-2 grid-start-9 absolute"
-            style={{ bottom: `27vw` }}
+        <section className="w-full relative">
+          <div
+            className="w-full grid"
+            style={{ height: `75vw`, marginTop: `-25vw` }}
           >
-            <p className="b1">and scale,</p>
-          </article>
+            <article className="grid-end-3" style={{ marginTop: `10vw` }}>
+              <p className="b1">and balance,</p>
+            </article>
 
-          <article className="grid-end-2 absolute" style={{ bottom: `18vw` }}>
-            <p className="b1">and the grid,</p>
-          </article>
-          <Ball
-            className={`absolute overflow-visible ${ball.balance[balanceIndex]} ${ball.scale[scaleIndex]}`}
-          />
+            <article
+              className="grid-end-2 grid-start-9 absolute"
+              style={{ bottom: `27vw` }}
+            >
+              <p className="b1">and scale,</p>
+            </article>
 
-          <Bush
-            className={`absolute overflow-visible ${bush.balance[balanceIndex]} ${bush.scale[scaleIndex]}`}
-          />
+            <Button
+              className="grid-end-2 absolute"
+              text="and the grid,"
+              style={{ bottom: `18vw` }}
+              onClick={() => setShowGridLines(!showGridLines)}
+            />
 
-          <CactusTwo
-            className={`absolute overflow-visible ${cactusTwo.balance[balanceIndex]} ${cactusTwo.scale[scaleIndex]}`}
-          />
+            <Ball
+              className={`absolute overflow-visible ${ball.balance[balanceIndex]} ${ball.scale[scaleIndex]}`}
+            />
 
-          <CactusOne
-            className={`absolute overflow-visible ${cactusOne.balance[balanceIndex]} ${cactusOne.scale[scaleIndex]}`}
-          />
+            <Bush
+              className={`absolute overflow-visible ${bush.balance[balanceIndex]} ${bush.scale[scaleIndex]}`}
+            />
+
+            <CactusTwo
+              className={`absolute overflow-visible ${cactusTwo.balance[balanceIndex]} ${cactusTwo.scale[scaleIndex]}`}
+            />
+
+            <CactusOne
+              className={`absolute overflow-visible ${cactusOne.balance[balanceIndex]} ${cactusOne.scale[scaleIndex]}`}
+            />
+          </div>
+
+          <div
+            className="w-full absolute -z-10 grid top-0 right-0 bottom-0 left-0 transition-height"
+            style={{ position: `absolute`, height: showGridLines ? `120%` : 0 }}
+          >
+            {new Array(12).fill(null).map((_, gridIndex) => {
+              const key = `griditem-${gridIndex}`;
+              return (
+                <div
+                  key={key}
+                  className={`h-full grid-start-${gridIndex +
+                    1} grid-end-1 border-red border-solid border-l-1 border-r-1
+                  } transition-border`}
+                />
+              );
+            })}
+          </div>
         </section>
 
         <section className="w-full relative">
-          <LastHill className="w-full relative -z-20" />
+          <LastHill className="w-full relative -z-10" />
 
           <div className="w-full h-full absolute top-0 right-0 bottom-0 left-0">
             <div

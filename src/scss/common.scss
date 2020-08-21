@@ -75,6 +75,18 @@
   top: 80vw
 }
 
+.border-red {
+  border-color: red;
+}
+
+.border-r-1 {
+  border-right-width: 1px;
+}
+
+.border-l-1 {
+  border-left-width: 1px;
+}
+
 .w-5\/12 {
   width: calc((100% - 4rem) * 5 / 12);
 }
