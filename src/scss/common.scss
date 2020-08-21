@@ -75,6 +75,10 @@
   top: 80vw
 }
 
+.w-5\/12 {
+  width: calc((100% - 4rem) * 5 / 12);
+}
+
 
 .invert-x {
   transform: scaleX(-1);

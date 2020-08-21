@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import staticGIF from "~assets/images/static.gif";
 
-const StaticWall = ({ className, numCols, numRows, overlayOpacity }) => (
+const StaticWall = ({ className, numCols, numRows, overlayStyle }) => (
   <div className={`relative ${className}`}>
     {new Array(numRows).fill(
       <ul
@@ -26,14 +26,14 @@ const StaticWall = ({ className, numCols, numRows, overlayOpacity }) => (
 
     <div
       className="w-full h-full absolute top-0 right-0 bottom-0 left-0 bg-white"
-      style={{ opacity: overlayOpacity }}
+      style={overlayStyle}
     />
   </div>
 );
 
 StaticWall.defaultProps = {
   className: ``,
-  overlayOpacity: 0.6,
+  overlayStyle: {},
   numCols: 5,
   numRows: 5
 };
@@ -41,7 +41,7 @@ StaticWall.defaultProps = {
 StaticWall.propTypes = {
   className: PropTypes.string,
   numCols: PropTypes.number,
-  overlayOpacity: PropTypes.number,
+  overlayStyle: PropTypes.shape({}),
   numRows: PropTypes.number
 };
 

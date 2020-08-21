@@ -3,7 +3,6 @@
   src: url("../assets/fonts/Supply-Regular.otf") format("opentype");
   font-display: block;
   font-weight: normal;
-  font-style: normal;
 }
 
 @font-face {
@@ -44,9 +43,9 @@ strong,
 //
 
 @mixin b1 {
-  font-family: Supply Helvetica, Arial, sans-serif;
+  font-family: Supply, Helvetica, Arial, sans-serif;
 
-  font-weight: normal;
+  font-weight: bold;
   font-size: 36px;
   line-height: 43px;
 }

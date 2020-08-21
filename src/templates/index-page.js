@@ -73,12 +73,38 @@ const IndexPage = ({ data, location }) => {
         <section className="w-full flex items-top justify-center relative">
           <Line className="relative block -z-10" />
 
+          <div className="w-full h-full absolute top-0 right-0 bottom-0 left-0">
+            <div className="w-full h-screen relative py-16 flex flex-col justify-between">
+              <article className="w-5/12 pl-8">
+                <p className="b1">
+                  For the last few months I’ve spent at least a seventh of my
+                  week dabbling in design, with help from Pat.
+                </p>
+              </article>
+
+              <article className="w-5/12 top-0 right-0 self-end pr-8">
+                <p className="b1">
+                  I’d never had any formal design training. I therefore learned
+                  about heaps of important stuff.
+                </p>
+              </article>
+
+              <article className="w-5/12 pl-8 mt-12">
+                <p className="b1">Like rhythm,</p>
+              </article>
+            </div>
+          </div>
+
           <motion.div
             animate={cursorAnimate(10)}
             className="absolute -z-20 left-0 bottom-0 right-0"
           >
             <Horizon className="w-full" />
           </motion.div>
+
+          <article className="w-1/2 absolute bottom-0 mb-48 mr-32">
+            <p className="b1">and depth,</p>
+          </article>
 
           <div
             className="w-full absolute -z-30 bottom-0"
@@ -98,16 +124,44 @@ const IndexPage = ({ data, location }) => {
             className="w-full absolute -z-10 overflow-hidden"
             style={{ height: `50vw`, top: `10vw` }}
           >
-            <StaticWall className="w-full h-full relative block" />
+            <StaticWall
+              className="w-full h-full relative block"
+              overlayStyle={{
+                background: `linear-gradient(180deg, rgba(255, 255, 255, 0.92) 0%, rgba(255, 255, 255, 0.85) 34.9%, rgba(255, 255, 255, 0.25) 100%)`
+              }}
+            />
           </div>
 
-          <HillThree className="w-full top-0 left-0 right-0" />
+          <div className="w-fill grid">
+            <article className="grid-end-2 grid-start-11">
+              <p className="b1">and texture,</p>
+            </article>
+          </div>
+
+          <HillThree
+            className="w-full top-0 left-0 right-0"
+            style={{ marginTop: `-36px` }}
+          />
         </section>
 
         <section
           className="w-full grid"
           style={{ height: `75vw`, marginTop: `-25vw` }}
         >
+          <article className="grid-end-3" style={{ marginTop: `10vw` }}>
+            <p className="b1">and balance,</p>
+          </article>
+
+          <article
+            className="grid-end-2 grid-start-9 absolute"
+            style={{ bottom: `27vw` }}
+          >
+            <p className="b1">and scale,</p>
+          </article>
+
+          <article className="grid-end-2 absolute" style={{ bottom: `18vw` }}>
+            <p className="b1">and the grid,</p>
+          </article>
           <Ball
             className={`absolute overflow-visible ${ball.balance[balanceIndex]} ${ball.scale[scaleIndex]}`}
           />
@@ -156,6 +210,43 @@ const IndexPage = ({ data, location }) => {
               />
             </div>
           </div>
+
+          <div
+            className="w-full h-full grid z-20 top-0 right-0 bottom-0 left-0"
+            style={{ position: `absolute` }}
+          >
+            <article className="grid-end-3 h-full grid-start-6 relative">
+              <p className="absolute b1" style={{ top: `15vw` }}>
+                and colour,
+              </p>
+            </article>
+
+            <article className="grid-end-3 h-full grid-start-10 relative">
+              <p className="absolute b1" style={{ top: `55vw` }}>
+                and typography,
+              </p>
+            </article>
+
+            <article
+              className="grid-end-4 h-full grid-start-2 flex items-end"
+              style={{ paddingBottom: `13vw` }}
+            >
+              <p className="b1">and heaps more stuff..</p>
+            </article>
+          </div>
+        </section>
+
+        <section className="w-full grid">
+          <article className="grid-end-5 grid-start-8 py-24">
+            <p className="b1">
+              I learned how to combine different forms of these things to read
+              or tell a story. I learned that it’s really fun.
+            </p>
+            <p className="mt-8 b1">
+              Big ups to Pat and Charl for the guidance and the opportunity.
+            </p>
+          </article>
+          <h2 className="grid-end-10 grid-start-3 pt-32 pb-64 f1">The End</h2>
         </section>
       </Layout>
     </>
