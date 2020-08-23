@@ -20,6 +20,10 @@ $fast-transition: $fast-transition-speed $ease-out-cubic;
 }
 
 .transition-top {
+  &--ease {
+    transition: 700ms ease-in-out top;
+  }
+
   transition: $default-transition top;
 }
 

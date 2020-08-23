@@ -55,10 +55,15 @@ const IndexPage = ({ data, location }) => {
     }
   };
 
+  const colours = [null, `red`, `green`, `purple`, `orange`, `pink`];
+
   const [balanceIndex, setBalanceIndex] = useState(0);
   const [scaleIndex, setScaleIndex] = useState(0);
+  const [colourIndex, setColourIndex] = useState(0);
+  const [showLine, setShowLine] = useState(false);
   const [showGridLines, setShowGridLines] = useState(false);
   const [showStaticOverlay, setShowStaticOverlay] = useState(false);
+  const [typographyClicks, setTypographyClicks] = useState(0);
 
   const { cactusOne, cactusTwo, bush, ball } = plantProperties;
 
@@ -86,7 +91,14 @@ const IndexPage = ({ data, location }) => {
         </section>
 
         <section className="w-full flex items-top justify-center relative">
-          <Line className="relative block -z-10" />
+          <div className="relative block -z-10 overflow-hidden">
+            <Line />
+            <div
+              className={`transition-top--ease w-full h-full absolute ${
+                showLine ? `top-full` : `top-0`
+              } right-0 bottom-0 left-0 bg-white `}
+            />
+          </div>
 
           <div className="w-full h-full absolute top-0 right-0 bottom-0 left-0">
             <div className="w-full h-screen relative py-16 flex flex-col justify-between">
@@ -104,8 +116,13 @@ const IndexPage = ({ data, location }) => {
                 </p>
               </article>
 
-              <article className="w-5/12 pl-8 mt-12">
-                <p className="b1">Like rhythm,</p>
+              <article className="relative block pl-8 mt-12">
+                <Button
+                  className="inline-block mb-2"
+                  text="Like rhythm,"
+                  onClick={() => setShowLine(true)}
+                />
+                <p className="caption">↑ click this</p>
               </article>
             </div>
           </div>
@@ -125,7 +142,7 @@ const IndexPage = ({ data, location }) => {
             className="w-full absolute -z-30 bottom-0"
             style={{ height: `26vw` }}
           >
-            {/* <DataFall className="w-full h-full" /> */}
+            <DataFall className="w-full h-full" />
           </div>
         </section>
 
@@ -269,26 +286,33 @@ const IndexPage = ({ data, location }) => {
               style={{ marginTop: `20vw`, marginLeft: `calc(16.66% + 1rem)` }}
             >
               <Smoke
-                className="w-1/2 absolute overflow-visible"
-                style={{ bottom: `40%`, left: `-15%` }}
+                className="w-2/5 absolute -z-10 overflow-visible"
+                style={{ bottom: `42%`, left: `-13%` }}
+                colour={colours[colourIndex]}
               />
 
               <Spaceship maskColour="#F5F5F5" img={stillStatic} />
 
-              <WhereAreWe
-                className="h-3 absolute"
-                style={{ right: `-15%`, top: `40%` }}
-              />
+              {typographyClicks > 0 && (
+                <WhereAreWe
+                  className="h-3 absolute"
+                  style={{ right: `-15%`, top: `40%` }}
+                />
+              )}
 
-              <SteveDidYouFillUp
-                className="h-4 absolute"
-                style={{ right: `-65%`, top: `60%` }}
-              />
+              {typographyClicks > 1 && (
+                <SteveDidYouFillUp
+                  className="h-4 absolute"
+                  style={{ right: `-65%`, top: `60%` }}
+                />
+              )}
 
-              <FuckingHellNotAgain
-                className="h-5 absolute"
-                style={{ right: `-38%`, top: `82%` }}
-              />
+              {typographyClicks > 2 && (
+                <FuckingHellNotAgain
+                  className="h-5 absolute"
+                  style={{ right: `-38%`, top: `82%` }}
+                />
+              )}
             </div>
           </div>
 
@@ -297,15 +321,25 @@ const IndexPage = ({ data, location }) => {
             style={{ position: `absolute` }}
           >
             <article className="grid-end-3 h-full grid-start-6 relative">
-              <p className="absolute b1" style={{ top: `15vw` }}>
-                and colour,
-              </p>
+              <Button
+                className="absolute"
+                style={{ top: `15vw` }}
+                text="and colour,"
+                onClick={() => {
+                  setColourIndex(oldIndex => (oldIndex + 1) % colours.length);
+                }}
+              />
             </article>
 
             <article className="grid-end-3 h-full grid-start-10 relative">
-              <p className="absolute b1" style={{ top: `55vw` }}>
-                and typography,
-              </p>
+              <Button
+                className="absolute"
+                text="and typography,"
+                style={{ top: `55vw` }}
+                onClick={() => {
+                  setTypographyClicks(oldNum => oldNum + 1);
+                }}
+              />
             </article>
 
             <article

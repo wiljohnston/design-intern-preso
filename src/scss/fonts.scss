@@ -53,3 +53,16 @@ strong,
 .b1 {
   @include b1;
 }
+
+@mixin caption {
+  font-family: Supply, Helvetica, Arial, sans-serif;
+
+  font-weight: bold;
+  font-style: italic;
+  font-size: 24px;
+  line-height: 24px;
+}
+
+.caption {
+  @include caption;
+}
