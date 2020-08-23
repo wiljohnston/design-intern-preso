@@ -142,7 +142,7 @@ const IndexPage = ({ data, location }) => {
             className="w-full absolute -z-30 bottom-0"
             style={{ height: `26vw` }}
           >
-            <DataFall className="w-full h-full" />
+            {window && <DataFall className="w-full h-full" />}
           </div>
         </section>
 
