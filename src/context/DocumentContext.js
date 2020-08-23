@@ -18,6 +18,9 @@ const DocumentProvider = ({ children }) => {
   //
 
   const handleResize = () => {
+    if (typeof window === `undefined`) {
+      return;
+    }
     let detectedDevice = `desktop`;
 
     if (

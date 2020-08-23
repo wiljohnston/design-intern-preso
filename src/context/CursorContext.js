@@ -18,12 +18,14 @@ const CursorProvider = ({ children }) => {
   //
 
   const handleMousemove = e => {
-    setCursorCenterDeltaX(-(0.5 - e.pageX / windowWidth));
-    setCursorCenterDeltaY(
-      -(0.5 - (e.pageY - window.pageYOffset) / windowHeight)
-    );
-    setCursorPositionX(e.pageX);
-    setCursorPositionY(e.pageY - window.pageYOffset);
+    if (typeof window !== `undefined`) {
+      setCursorCenterDeltaX(-(0.5 - e.pageX / windowWidth));
+      setCursorCenterDeltaY(
+        -(0.5 - (e.pageY - window.pageYOffset) / windowHeight)
+      );
+      setCursorPositionX(e.pageX);
+      setCursorPositionY(e.pageY - window.pageYOffset);
+    }
   };
 
   const handleResize = () => {
