@@ -15,8 +15,20 @@ $fast-transition: $fast-transition-speed $ease-out-cubic;
   transition: $default-transition background;
 }
 
+.transition-margin-top {
+  transition: 300ms ease-in-out margin-top;
+}
+
+.transition-top {
+  transition: $default-transition top;
+}
+
+.transition-width {
+  transition: $default-transition width;
+}
+
 .transition-height {
-  transition: $default-transition height;
+  transition: $slow-transition height;
 }
 
 .transition-opacity {

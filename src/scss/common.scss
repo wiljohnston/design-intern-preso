@@ -43,12 +43,37 @@
   top: 30%
 }
 
+.-top-10vw {
+  top: -10vw
+}
+
+.top-1vw {
+  top: 1vw
+}
+
+
 .top-10vw {
   top: 10vw
 }
 
+.top-15vw {
+  top: 15vw
+}
+
+.top-19vw {
+  top: 19vw
+}
+
 .top-20vw {
   top: 20vw
+}
+
+.top-25vw {
+  top: 25vw
+}
+
+.top-27vw {
+  top: 27vw
 }
 
 .top-30vw {
@@ -73,6 +98,26 @@
 
 .top-80vw {
   top: 80vw
+}
+
+.mt-full {
+  margin-top: 100%;
+}
+
+.w-3\/2 {
+  width: 150%;
+}
+
+.w-2\/1 {
+  width: 200%;
+}
+
+.w-5\/2 {
+  width: 250%;
+}
+
+.w-3\/1 {
+  width: 300%;
 }
 
 .border-red {

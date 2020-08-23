@@ -37,15 +37,28 @@ const IndexPage = ({ data, location }) => {
   });
 
   const plantProperties = {
-    cactusOne: { balance: [`grid-start-11 top-10vw`], scale: [`grid-end-2`] },
-    cactusTwo: { balance: [`grid-start-6`], scale: [`grid-end-1`] },
-    ball: { balance: [`grid-start-2 top-20vw`], scale: [`grid-end-1`] },
-    bush: { balance: [`grid-start-3 top-30vw`], scale: [`grid-end-5`] }
+    cactusOne: {
+      balance: [`top-10vw`, `top-20vw`],
+      scale: [`w-full`, `w-2/1`, `w-1/3`]
+    },
+    cactusTwo: {
+      balance: [`top-1vw`, `top-10vw`],
+      scale: [`w-full`, `w-1/2`, `w-2/5`]
+    },
+    ball: {
+      balance: [`top-20vw`, `top-19vw`],
+      scale: [`w-full`, `w-1/3`, `w-4/5`]
+    },
+    bush: {
+      balance: [`top-30vw`, `top-27vw`],
+      scale: [`w-3/2`, `w-1/2`, `w-3/1`]
+    }
   };
 
   const [balanceIndex, setBalanceIndex] = useState(0);
   const [scaleIndex, setScaleIndex] = useState(0);
   const [showGridLines, setShowGridLines] = useState(false);
+  const [showStaticOverlay, setShowStaticOverlay] = useState(false);
 
   const { cactusOne, cactusTwo, bush, ball } = plantProperties;
 
@@ -127,7 +140,9 @@ const IndexPage = ({ data, location }) => {
             style={{ height: `50vw`, top: `10vw` }}
           >
             <StaticWall
-              className="w-full h-full relative block"
+              className={`w-full h-full ${
+                showStaticOverlay ? `mt-0` : `mt-full`
+              } relative block transition-margin-top`}
               overlayStyle={{
                 background: `linear-gradient(180deg, rgba(255, 255, 255, 0.92) 0%, rgba(255, 255, 255, 0.85) 34.9%, rgba(255, 255, 255, 0.25) 100%)`
               }}
@@ -136,7 +151,12 @@ const IndexPage = ({ data, location }) => {
 
           <div className="w-fill grid">
             <article className="grid-end-2 grid-start-11">
-              <p className="b1">and texture,</p>
+              <Button
+                text="and texture,"
+                onClick={() => {
+                  setShowStaticOverlay(oldValue => !oldValue);
+                }}
+              />
             </article>
           </div>
 
@@ -152,14 +172,34 @@ const IndexPage = ({ data, location }) => {
             style={{ height: `75vw`, marginTop: `-25vw` }}
           >
             <article className="grid-end-3" style={{ marginTop: `10vw` }}>
-              <p className="b1">and balance,</p>
+              <Button
+                text="and balance,"
+                onClick={() => {
+                  setBalanceIndex(
+                    oldIndex =>
+                      (oldIndex + 1) %
+                      plantProperties[Object.keys(plantProperties)[0]].balance
+                        .length
+                  );
+                }}
+              />
             </article>
 
             <article
               className="grid-end-2 grid-start-9 absolute"
-              style={{ bottom: `27vw` }}
+              style={{ bottom: `47vw` }}
             >
-              <p className="b1">and scale,</p>
+              <Button
+                text="and scale,"
+                onClick={() => {
+                  setScaleIndex(
+                    oldIndex =>
+                      (oldIndex + 1) %
+                      plantProperties[Object.keys(plantProperties)[0]].scale
+                        .length
+                  );
+                }}
+              />
             </article>
 
             <Button
@@ -169,21 +209,37 @@ const IndexPage = ({ data, location }) => {
               onClick={() => setShowGridLines(!showGridLines)}
             />
 
-            <Ball
-              className={`absolute overflow-visible ${ball.balance[balanceIndex]} ${ball.scale[scaleIndex]}`}
-            />
+            <div
+              className={`grid-end-1 grid-start-2 transition-top absolute overflow-visible ${ball.balance[balanceIndex]} pointer-events-none`}
+            >
+              <Ball
+                className={`transition-width ${ball.scale[scaleIndex]} overflow-visible`}
+              />
+            </div>
 
-            <Bush
-              className={`absolute overflow-visible ${bush.balance[balanceIndex]} ${bush.scale[scaleIndex]}`}
-            />
+            <div
+              className={`grid-end-5 grid-start-3 transition-top absolute overflow-visible ${bush.balance[balanceIndex]} pointer-events-none`}
+            >
+              <Bush
+                className={`transition-width ${bush.scale[scaleIndex]} overflow-visible`}
+              />
+            </div>
 
-            <CactusTwo
-              className={`absolute overflow-visible ${cactusTwo.balance[balanceIndex]} ${cactusTwo.scale[scaleIndex]}`}
-            />
+            <div
+              className={`grid-end-1 grid-start-6 transition-top absolute overflow-visible ${cactusTwo.balance[balanceIndex]} pointer-events-none`}
+            >
+              <CactusTwo
+                className={`transition-width ${cactusTwo.scale[scaleIndex]} overflow-visible`}
+              />
+            </div>
 
-            <CactusOne
-              className={`absolute overflow-visible ${cactusOne.balance[balanceIndex]} ${cactusOne.scale[scaleIndex]}`}
-            />
+            <div
+              className={`grid-end-2 grid-start-11 transition-top absolute overflow-visible ${cactusOne.balance[balanceIndex]} pointer-events-none`}
+            >
+              <CactusOne
+                className={`transition-width ${cactusOne.scale[scaleIndex]} overflow-visible`}
+              />
+            </div>
           </div>
 
           <div
@@ -268,7 +324,8 @@ const IndexPage = ({ data, location }) => {
               or tell a story. I learned that it’s really fun.
             </p>
             <p className="mt-8 b1">
-              Big ups to Pat and Charl for the guidance and the opportunity.
+              Shout out to P-daddy and C-dog for the guidance and the
+              opportunity.
             </p>
           </article>
           <h2 className="grid-end-10 grid-start-3 pt-32 pb-64 f1">The End</h2>
