@@ -9,7 +9,7 @@ const path = require(`path`);
 const { createFilePath } = require(`gatsby-source-filesystem`);
 const { fmImagesToRelative } = require(`gatsby-remark-relative-images`);
 
-exports.onCreateWebpackConfig = ({ actions, loaders }) => {
+exports.onCreateWebpackConfig = ({ actions, loaders, stage }) => {
   actions.setWebpackConfig({
     resolve: {
       alias: {
@@ -23,14 +23,17 @@ exports.onCreateWebpackConfig = ({ actions, loaders }) => {
         "~workers": path.resolve(__dirname, `src/workers`)
       }
     },
-    module: {
-      rules: [
-        {
-          test: /-/,
-          use: loaders.null()
-        }
-      ]
-    }
+    module:
+      stage === `build-html`
+        ? {
+            rules: [
+              {
+                test: /-/,
+                use: loaders.null()
+              }
+            ]
+          }
+        : undefined
   });
 };
 
