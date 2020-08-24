@@ -29,8 +29,8 @@ import WhereAreWe from "~components/svg/WhereAreWe";
 const IndexPage = ({ data, location }) => {
   let motion = null;
   if (typeof window !== `undefined`) {
-    // eslint-disable-next-line global-require
-    motion = require(`framer-motion`);
+    // eslint-disable-next-line
+    motion = require(`framer-motion`).motion;
   }
 
   const { frontmatter } = data.markdownRemark;

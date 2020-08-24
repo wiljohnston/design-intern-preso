@@ -4,8 +4,8 @@ import PropTypes from "prop-types";
 const Button = ({ className, color, onClick, text, transparent, style }) => {
   let motion = null;
   if (typeof window !== `undefined`) {
-    // eslint-disable-next-line global-require
-    motion = require(`framer-motion`);
+    // eslint-disable-next-line
+    motion = require(`framer-motion`).motion;
   }
 
   const buttonJSX = (
