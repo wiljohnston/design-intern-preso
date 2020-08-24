@@ -82,16 +82,12 @@ const IndexPage = ({ data, location }) => {
             {frontmatter.title}
           </h1>
 
-          {window ? (
-            <motion.div
-              className="absolute top-30pc right-0 w-1/5"
-              animate={cursorAnimate(50)}
-            >
-              <Spaceship className="w-full relative" />
-            </motion.div>
-          ) : (
+          <motion.div
+            className="absolute top-30pc right-0 w-1/5"
+            animate={cursorAnimate(50)}
+          >
             <Spaceship className="w-full relative" />
-          )}
+          </motion.div>
         </section>
 
         <section className="w-full flex items-top justify-center relative">
@@ -131,16 +127,12 @@ const IndexPage = ({ data, location }) => {
             </div>
           </div>
 
-          {window ? (
-            <motion.div
-              animate={cursorAnimate(10)}
-              className="absolute -z-20 left-0 bottom-0 right-0"
-            >
-              <Horizon className="w-full" />
-            </motion.div>
-          ) : (
+          <motion.div
+            animate={cursorAnimate(10)}
+            className="absolute -z-20 left-0 bottom-0 right-0"
+          >
             <Horizon className="w-full" />
-          )}
+          </motion.div>
 
           <article className="w-1/2 absolute bottom-0 mb-48 mr-32">
             <p className="b1">and depth,</p>

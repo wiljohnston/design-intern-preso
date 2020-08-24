@@ -3,19 +3,7 @@ import { motion } from "framer-motion";
 import PropTypes from "prop-types";
 
 const Button = ({ className, color, onClick, text, transparent, style }) => {
-  const buttonJSX = (
-    <button
-      type="button"
-      className={`button button--${color} ${
-        transparent ? `button--transparent` : ``
-      } ${className} relative b1`}
-      onClick={onClick}
-    >
-      {text}
-    </button>
-  );
-
-  return window ? (
+  return (
     <motion.div
       style={style}
       className={`${className}`}
@@ -34,8 +22,6 @@ const Button = ({ className, color, onClick, text, transparent, style }) => {
         {text}
       </button>
     </motion.div>
-  ) : (
-    buttonJSX
   );
 };
 
