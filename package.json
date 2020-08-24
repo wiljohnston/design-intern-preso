@@ -10,6 +10,7 @@
     "dev": "gatsby develop -H 0.0.0.0",
     "build": "run-p build:**",
     "build:app": "gatsby build",
+    "test": "echo 'hello'",
     "build:lambda": "netlify-lambda build src/lambda"
   },
   "dependencies": {
