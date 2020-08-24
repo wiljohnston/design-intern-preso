@@ -7,7 +7,7 @@
  * See: https://www.gatsbyjs.org/docs/browser-apis/
  */
 
-import "lazysizes";
+// import "lazysizes";
 
 import React from "react";
 import AppProvider from "~context/AppContext";
@@ -21,9 +21,7 @@ export const wrapRootElement = ({ element }) => {
     <>
       <DocumentProvider>
         <CursorProvider>
-          <AppProvider>
-            {element}
-          </AppProvider>
+          <AppProvider>{element}</AppProvider>
         </CursorProvider>
       </DocumentProvider>
     </>

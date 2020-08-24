@@ -10,7 +10,7 @@ const AppProvider = ({ children }) => {
   const [pathname, setPathname] = useState(null);
 
   useEffect(() => {
-    if (window) {
+    if (typeof window !== `undefined`) {
       setPathname(window.location.pathname);
     }
 

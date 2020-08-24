@@ -18,7 +18,7 @@ const CursorProvider = ({ children }) => {
   //
 
   const handleMousemove = e => {
-    if (window && typeof window !== `undefined`) {
+    if (typeof window !== `undefined`) {
       setCursorCenterDeltaX(-(0.5 - e.pageX / windowWidth));
       setCursorCenterDeltaY(
         -(0.5 - (e.pageY - window.pageYOffset) / windowHeight)

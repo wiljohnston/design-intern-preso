@@ -2,7 +2,6 @@
 // import { PropTypes } from "prop-types";
 
 import React, { useContext, useState } from "react";
-import { motion } from "framer-motion";
 import { graphql } from "gatsby";
 import Layout from "~components/Layout";
 import SEO from "~components/SEO";
@@ -28,6 +27,12 @@ import FuckingHellNotAgain from "~components/svg/FuckingHellNotAgain";
 import WhereAreWe from "~components/svg/WhereAreWe";
 
 const IndexPage = ({ data, location }) => {
+  let motion = null;
+  if (typeof window !== `undefined`) {
+    // eslint-disable-next-line global-require
+    motion = require(`framer-motion`);
+  }
+
   const { frontmatter } = data.markdownRemark;
 
   const { cursorCenterDeltaX, cursorCenterDeltaY } = useContext(CursorContext);
@@ -82,12 +87,18 @@ const IndexPage = ({ data, location }) => {
             {frontmatter.title}
           </h1>
 
-          <motion.div
-            className="absolute top-30pc right-0 w-1/5"
-            animate={cursorAnimate(50)}
-          >
-            <Spaceship className="w-full relative" />
-          </motion.div>
+          {motion !== null ? (
+            <motion.div
+              className="absolute top-30pc right-0 w-1/5"
+              animate={cursorAnimate(50)}
+            >
+              <Spaceship className="w-full relative" />
+            </motion.div>
+          ) : (
+            <div className="absolute top-30pc right-0 w-1/5">
+              <Spaceship className="w-full relative" />
+            </div>
+          )}
         </section>
 
         <section className="w-full flex items-top justify-center relative">
@@ -127,12 +138,18 @@ const IndexPage = ({ data, location }) => {
             </div>
           </div>
 
-          <motion.div
-            animate={cursorAnimate(10)}
-            className="absolute -z-20 left-0 bottom-0 right-0"
-          >
-            <Horizon className="w-full" />
-          </motion.div>
+          {motion !== null ? (
+            <motion.div
+              animate={cursorAnimate(10)}
+              className="absolute -z-20 left-0 bottom-0 right-0"
+            >
+              <Horizon className="w-full" />
+            </motion.div>
+          ) : (
+            <div className="absolute -z-20 left-0 bottom-0 right-0">
+              <Horizon className="w-full" />
+            </div>
+          )}
 
           <article className="w-1/2 absolute bottom-0 mb-48 mr-32">
             <p className="b1">and depth,</p>
@@ -142,7 +159,9 @@ const IndexPage = ({ data, location }) => {
             className="w-full absolute -z-30 bottom-0"
             style={{ height: `26vw` }}
           >
-            {window && <DataFall className="w-full h-full" />}
+            {typeof window !== `undefined` && (
+              <DataFall className="w-full h-full" />
+            )}
           </div>
         </section>
 

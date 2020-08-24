@@ -1,9 +1,26 @@
 import React from "react";
-import { motion } from "framer-motion";
 import PropTypes from "prop-types";
 
 const Button = ({ className, color, onClick, text, transparent, style }) => {
-  return (
+  let motion = null;
+  if (typeof window !== `undefined`) {
+    // eslint-disable-next-line global-require
+    motion = require(`framer-motion`);
+  }
+
+  const buttonJSX = (
+    <button
+      type="button"
+      className={`button button--${color} ${
+        transparent ? `button--transparent` : ``
+      } ${className} relative b1`}
+      onClick={onClick}
+    >
+      {text}
+    </button>
+  );
+
+  return motion !== null ? (
     <motion.div
       style={style}
       className={`${className}`}
@@ -12,16 +29,10 @@ const Button = ({ className, color, onClick, text, transparent, style }) => {
       }}
       whileTap={{ scale: 0.975 }}
     >
-      <button
-        type="button"
-        className={`button button--${color} ${
-          transparent ? `button--transparent` : ``
-        } ${className} relative b1`}
-        onClick={onClick}
-      >
-        {text}
-      </button>
+      {buttonJSX}
     </motion.div>
+  ) : (
+    buttonJSX
   );
 };
 
