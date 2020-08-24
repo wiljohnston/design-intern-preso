@@ -133,7 +133,7 @@ const IndexPage = ({ data, location }) => {
                   text="Like rhythm,"
                   onClick={() => setShowLine(true)}
                 />
-                <p className="caption">↑ click this</p>
+                <p className="caption">↑ click these</p>
               </article>
             </div>
           </div>
@@ -207,7 +207,10 @@ const IndexPage = ({ data, location }) => {
             className="w-full grid"
             style={{ height: `75vw`, marginTop: `-25vw` }}
           >
-            <article className="grid-end-3" style={{ marginTop: `10vw` }}>
+            <article
+              className="grid-end-3 grid-start-1"
+              style={{ marginTop: `10vw` }}
+            >
               <Button
                 text="and balance,"
                 onClick={() => {
@@ -239,7 +242,7 @@ const IndexPage = ({ data, location }) => {
             </article>
 
             <Button
-              className="grid-end-2 absolute"
+              className="grid-end-3 grid-start-1 absolute"
               text="and the grid,"
               style={{ bottom: `18vw` }}
               onClick={() => setShowGridLines(!showGridLines)}
@@ -249,6 +252,7 @@ const IndexPage = ({ data, location }) => {
               className={`grid-end-1 grid-start-2 transition-top absolute overflow-visible ${ball.balance[balanceIndex]} pointer-events-none`}
             >
               <Ball
+                id="ball"
                 className={`transition-width ${ball.scale[scaleIndex]} overflow-visible`}
               />
             </div>
@@ -257,6 +261,7 @@ const IndexPage = ({ data, location }) => {
               className={`grid-end-5 grid-start-3 transition-top absolute overflow-visible ${bush.balance[balanceIndex]} pointer-events-none`}
             >
               <Bush
+                id="bush"
                 className={`transition-width ${bush.scale[scaleIndex]} overflow-visible`}
               />
             </div>
@@ -265,6 +270,7 @@ const IndexPage = ({ data, location }) => {
               className={`grid-end-1 grid-start-6 transition-top absolute overflow-visible ${cactusTwo.balance[balanceIndex]} pointer-events-none`}
             >
               <CactusTwo
+                id="cactusTwo"
                 className={`transition-width ${cactusTwo.scale[scaleIndex]} overflow-visible`}
               />
             </div>
@@ -273,13 +279,14 @@ const IndexPage = ({ data, location }) => {
               className={`grid-end-2 grid-start-11 transition-top absolute overflow-visible ${cactusOne.balance[balanceIndex]} pointer-events-none`}
             >
               <CactusOne
+                id="cactusOne"
                 className={`transition-width ${cactusOne.scale[scaleIndex]} overflow-visible`}
               />
             </div>
           </div>
 
           <div
-            className="w-full absolute -z-10 grid top-0 right-0 bottom-0 left-0 transition-height"
+            className="w-full absolute -z-10 grid top-0 right-0 bottom-0 left-0 transition-height pointer-events-none"
             style={{ position: `absolute`, height: showGridLines ? `120%` : 0 }}
           >
             {new Array(12).fill(null).map((_, gridIndex) => {
