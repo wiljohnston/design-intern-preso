@@ -288,8 +288,7 @@ const IndexPage = ({ data, location }) => {
                 <div
                   key={key}
                   className={`h-full grid-start-${gridIndex +
-                    1} grid-end-1 border-red border-solid border-l-1 border-r-1
-                  } transition-border`}
+                    1} grid-end-1 border-red border-solid border-l-1 border-r-1 transition-border`}
                 />
               );
             })}
