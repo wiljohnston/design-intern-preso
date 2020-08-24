@@ -7,7 +7,7 @@
  * See: https://www.gatsbyjs.org/docs/ssr-apis/
  */
 
-// import "lazysizes";
+import "lazysizes";
 
 import React from "react";
 import AppProvider from "~context/AppContext";
